@@ -28,5 +28,4 @@ def factor():
             print("{}".format(num), end="")
         print()
 
-if __name__ == "__main__":
-    factor()
+factor()
