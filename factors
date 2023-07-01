@@ -1,12 +1,17 @@
 #!/usr/bin/python3
 
 import sys
+from math import isqrt
 
 def factorize(num):
     factors = []
-    for i in range(2, num // 2 + 1):
+    sqrt_num = isqrt(num)
+    for i in range(2, sqrt_num + 1):
         if num % i == 0:
             factors.append((i, num // i))
+            break
+    else:
+        factors.append((1, num))
     return factors
 
 def factor():
@@ -22,8 +27,10 @@ def factor():
         factorizations = factorize(num)
         print("{:d}=".format(num), end="")
         if factorizations:
-            for factorization in factorizations:
-                print("{}*{}".format(factorization[0], factorization[1]))
+            fact1, fact2 = factorizations[0]
+            if fact1 > fact2:
+                fact1, fact2 = fact2, fact1
+            print("{}*{}".format(fact1, fact2))
         
         else:
             print("{}".format(num))
