@@ -30,7 +30,7 @@ def factor():
             fact1, fact2 = factorizations[0]
             if fact1 > fact2:
                 fact1, fact2 = fact2, fact1
-            print("{}*{}".format(fact1, fact2))
+            print("{}*{}".format(fact2, fact1))
         
         else:
             print("{}".format(num))
