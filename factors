@@ -9,7 +9,7 @@ def factorize(num):
             factors.append((i, num // i))
     return factors
 
-if __name__ == "__main__":
+def factor():
     if len(sys.argv) < 2:
         print("Usage: factors <file>")
         sys.exit(1)
@@ -20,6 +20,13 @@ if __name__ == "__main__":
 
     for num in numbers:
         factorization = factorize(num)
-        for facts in factorization:
-            print("{} = {} * {}".format(num, facts[0], facts[1])
+        print("{}".format(num), end="")
+        if factorization:
+            for facts in factorization:
+                print("{} = {} * {}".format(num, facts[0], facts[1]), end="")
+        else:
+            print("{}".format(num), end="")
+        print()
 
+if __name__ == "__main__":
+    factor()
