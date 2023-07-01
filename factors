@@ -20,7 +20,7 @@ def factor():
 
     for num in numbers:
         factorization = factorize(num)
-        print("{}".format(num), end="")
+        print("{:d}".format(num), end="")
         if factorization:
             for facts in factorization:
                 print("{} = {} * {}".format(num, facts[0], facts[1]), end="")
