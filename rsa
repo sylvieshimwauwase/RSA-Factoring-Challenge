@@ -1,0 +1,45 @@
+#!/usr/bin/python3
+
+import sys
+from math import isqrt
+
+def gcd(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+def pollards_rho(n):
+    x = 2
+    y = 2
+    d = 1
+
+    f = lambda x: (x**2 + 1) % n
+
+    while d == 1:
+        x = f(x)
+        y = f(f(y))
+        d = gcd(abs(x - y), n)
+
+        if d == n:
+            return None
+        else:
+            return d
+
+def factor():
+    if len(sys.argv) < 2:
+        print("Usage: factors <file>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    with open(filename, "r") as file:
+        numbers = [int(line.strip()) for line in file]
+
+    for num in numbers:
+        fact1 = pollards_rho(num)
+        if fact1 is None:
+            print(f"No prime factors found for {num}")
+        else:
+            fact2 = num // fact2
+            print(f"{num} = {fact1} * {fact2}")
+factor()
+
