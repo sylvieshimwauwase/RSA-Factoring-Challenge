@@ -3,26 +3,10 @@
 import sys
 from math import isqrt
 
-def is_prime(num):
-    if num < 2:
-        return False
-    if num == 2 or num == 3:
-        return True
-    if num % 2 == 0 or num % 3 == 0:
-        return False
-
-    i = 5
-    w= 2
-    while i * i <= num:
-        if num % i == 0:
-            return False
-        i += w
-        w = 6 - w
-    return True
-
 def factorize(num):
     factors = []
     sqrt_num = isqrt(num)
+
     for i in range(2, sqrt_num + 1):
         if num % i == 0:
             factors.append((i, num // i))
